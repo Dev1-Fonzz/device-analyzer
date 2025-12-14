@@ -3,85 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  <meta name="description" content="Professional device troubleshooter with touch test, diagnostics & reporting.">
-  <title>Device Intellect Analyzer</title>
+  <title>NeuroScan Diagnostics</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
 </head>
-<body class="bg">
-  <div class="container">
-    <header class="hero">
-      <h1>Device Intellect Analyzer</h1>
-      <p class="subtitle">Professional troubleshooting for your device</p>
+<body>
+  <!-- Particulate Background -->
+  <div id="particles"></div>
+
+  <div class="interface">
+    <header>
+      <h1>NEUROSCAN</h1>
+      <div class="subtitle">Device Intelligence & Diagnostics</div>
+      <div id="liveClock" class="live-clock"></div>
     </header>
 
-    <!-- Device Overview -->
-    <div class="glass-card">
-      <h2>📱 Device Overview</h2>
-      <button class="action-btn" onclick="analyzeDevice()">→ Analyze Now</button>
-      <div id="deviceInfo" class="collapsible-content"></div>
-    </div>
-
-    <!-- Touch Tester -->
-    <div class="glass-card">
-      <h2>🖐️ Touch Screen Tester</h2>
-      <p>Tap to test responsiveness. Dead zones won’t react.</p>
-      <button class="action-btn" onclick="startTouchTest()">→ Start Touch Test</button>
-      <div id="touchTester" class="touch-tester"></div>
-    </div>
-
-    <!-- Display Tests -->
-    <div class="glass-card">
-      <h2>🎨 Display Tests</h2>
-      <div class="test-grid">
-        <button class="test-btn red" onclick="showColor('red')"></button>
-        <button class="test-btn green" onclick="showColor('green')"></button>
-        <button class="test-btn blue" onclick="showColor('blue')"></button>
-        <button class="test-btn white" onclick="showColor('white')"></button>
-        <button class="test-btn black" onclick="showColor('black')"></button>
-        <button class="test-btn gray" onclick="showColor('gray')"></button>
+    <main>
+      <!-- Diagnostics Panel -->
+      <div class="panel" id="diagnostics">
+        <div class="panel-header">🧠 System Scan</div>
+        <button class="glow-btn" onclick="runFullScan()">INITIATE FULL SCAN</button>
+        <div id="scanOutput" class="output"></div>
       </div>
-      <button class="action-btn small" onclick="exitColorTest()">Exit Color Test</button>
-    </div>
 
-    <!-- Network & Browser -->
-    <div class="glass-card">
-      <h2>🌐 Network & Browser</h2>
-      <button class="action-btn" onclick="testNetwork()">→ Run Diagnostics</button>
-      <div id="networkInfo" class="collapsible-content"></div>
-    </div>
-
-    <!-- Report Issue -->
-    <div class="glass-card">
-      <h2>📝 Report an Issue</h2>
-      <textarea id="issueDesc" placeholder="Describe your problem..."></textarea>
-      <div class="button-row">
-        <button class="action-btn small" onclick="copyDeviceSummary()">Copy Device Info</button>
-        <button class="action-btn small alt" onclick="sendReport()">Send Report</button>
+      <!-- Touch Diagnostic -->
+      <div class="panel" id="touchTest">
+        <div class="panel-header">🖐️ Touch Matrix</div>
+        <button class="glow-btn" onclick="activateTouchField()">ACTIVATE TOUCH FIELD</button>
+        <div id="touchField" class="touch-field"></div>
       </div>
-    </div>
 
-    <!-- Help & Tips -->
-    <div class="glass-card">
-      <h2>ℹ️ Help & Tips</h2>
-      <div class="tip">
-        <strong>Touch unresponsive?</strong><br>
-        → Restart your device.<br>
-        → Clean screen with microfiber cloth.
+      <!-- Report -->
+      <div class="panel" id="report">
+        <div class="panel-header">📡 Send Diagnostic Report</div>
+        <textarea id="userReport" placeholder="Describe anomaly..."></textarea>
+        <button class="glow-btn alt" onclick="submitReport()">TRANSMIT REPORT</button>
       </div>
-      <div class="tip">
-        <strong>Battery drains fast?</strong><br>
-        → Disable background apps.<br>
-        → Lower screen brightness.
-      </div>
-    </div>
+    </main>
 
-    <footer class="footer">
-      <div>Device Intellect Analyzer v1.0 • Dec 2025</div>
-      <div>No data leaves your device. All processing is local.</div>
+    <footer>
+      <div class="footer-text">© 2025 NeuroScan | Local Processing Only</div>
     </footer>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
