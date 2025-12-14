@@ -3,46 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  <title>NeuroScan Diagnostics</title>
+  <meta name="description" content="World's most intelligent device troubleshooter. Futuristic. Local. Secure.">
+  <title>NeuroScan Elite</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%238a8aff%22>🧠</text></svg>">
 </head>
-<body>
-  <!-- Particulate Background -->
+<body id="body">
+  <!-- Dynamic Particles -->
   <div id="particles"></div>
 
-  <div class="interface">
+  <!-- UI -->
+  <div class="core-interface">
     <header>
-      <h1>NEUROSCAN</h1>
-      <div class="subtitle">Device Intelligence & Diagnostics</div>
-      <div id="liveClock" class="live-clock"></div>
+      <h1>NEUROSCAN<span class="elite">ELITE</span></h1>
+      <div class="subtitle">Intelligence-Based Device Diagnostics</div>
+      <div id="liveIntel" class="intel-bar"></div>
     </header>
 
-    <main>
-      <!-- Diagnostics Panel -->
-      <div class="panel" id="diagnostics">
-        <div class="panel-header">🧠 System Scan</div>
-        <button class="glow-btn" onclick="runFullScan()">INITIATE FULL SCAN</button>
-        <div id="scanOutput" class="output"></div>
+    <nav class="mode-toggle">
+      <button id="modeBtn" onclick="toggleTheme()">🌌 Dark Matter</button>
+    </nav>
+
+    <main class="modules">
+      <!-- Module 1: Intelligence Scan -->
+      <div class="module" id="intelModule">
+        <div class="module-header">🧠 INTELLIGENCE SCAN</div>
+        <button class="elite-btn" onclick="runIntelScan()">LAUNCH INTEL SCAN</button>
+        <div id="intelOutput" class="output-panel"></div>
       </div>
 
-      <!-- Touch Diagnostic -->
-      <div class="panel" id="touchTest">
-        <div class="panel-header">🖐️ Touch Matrix</div>
-        <button class="glow-btn" onclick="activateTouchField()">ACTIVATE TOUCH FIELD</button>
-        <div id="touchField" class="touch-field"></div>
+      <!-- Module 2: Touch Matrix -->
+      <div class="module" id="touchModule">
+        <div class="module-header">🖐️ MULTI-TOUCH MATRIX</div>
+        <button class="elite-btn" onclick="activateTouchMatrix()">ACTIVATE MATRIX</button>
+        <div id="touchMatrix" class="touch-matrix"></div>
+        <div id="touchStats" class="stats-panel"></div>
       </div>
 
-      <!-- Report -->
-      <div class="panel" id="report">
-        <div class="panel-header">📡 Send Diagnostic Report</div>
-        <textarea id="userReport" placeholder="Describe anomaly..."></textarea>
-        <button class="glow-btn alt" onclick="submitReport()">TRANSMIT REPORT</button>
+      <!-- Module 3: Stress Test -->
+      <div class="module" id="stressModule">
+        <div class="module-header">⚡ PERFORMANCE STRESS TEST</div>
+        <button class="elite-btn" onclick="runStressTest()">BEGIN STRESS TEST</button>
+        <div id="stressResult" class="output-panel"></div>
+      </div>
+
+      <!-- Module 4: Report & Support -->
+      <div class="module" id="supportModule">
+        <div class="module-header">📡 INTELLIGENT REPORT</div>
+        <textarea id="userIssue" placeholder="Describe anomaly or observation..."></textarea>
+        <div class="support-actions">
+          <button class="elite-btn alt" onclick="generateFingerprint()">GENERATE FINGERPRINT</button>
+          <button class="elite-btn" onclick="sendIntelligentReport()">TRANSMIT REPORT</button>
+        </div>
+        <div id="qrCode" class="qr-placeholder">QR for WhatsApp Support</div>
       </div>
     </main>
 
-    <footer>
-      <div class="footer-text">© 2025 NeuroScan | Local Processing Only</div>
+    <footer class="elite-footer">
+      <div>NeuroScan Elite v2.0 • Intellect UI • Dec 2025</div>
+      <div>All processing is local. Zero data leaves your device.</div>
     </footer>
   </div>
 
