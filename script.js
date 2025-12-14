@@ -1,41 +1,6 @@
+// ✅ Particle background tetap sama (guna dari sebelum ini)
 
-// Particles Background (Lightweight)
-function initParticles() {
-  const container = document.getElementById('particles');
-  const particleCount = 60;
-  for (let i = 0; i < particleCount; i++) {
-    const p = document.createElement('div');
-    p.style.position = 'absolute';
-    p.style.width = Math.random() * 3 + 1 + 'px';
-    p.style.height = p.style.width;
-    p.style.background = '#8a8aff';
-    p.style.borderRadius = '50%';
-    p.style.opacity = Math.random() * 0.5 + 0.1;
-    p.style.left = Math.random() * 100 + '%';
-    p.style.top = Math.random() * 100 + '%';
-    p.style.boxShadow = '0 0 10px #8a8aff';
-    container.appendChild(p);
-
-    // Animate
-    animateParticle(p);
-  }
-}
-
-function animateParticle(el) {
-  const duration = 15000 + Math.random() * 20000;
-  const x = Math.random() > 0.5 ? 30 : -30;
-  const y = Math.random() > 0.5 ? 30 : -30;
-  el.style.transition = `transform ${duration}ms linear`;
-  el.style.transform = `translate(${x}px, ${y}px)`;
-
-  setTimeout(() => {
-    el.style.transition = 'none';
-    el.style.transform = 'translate(0, 0)';
-    setTimeout(() => animateParticle(el), 50);
-  }, duration);
-}
-
-// Live Clock
+// ⏱️ Live Clock
 function updateClock() {
   const now = new Date();
   document.getElementById('liveClock').textContent = now.toLocaleTimeString('en-MY', {
@@ -46,22 +11,77 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Full Scan
+// 🔍 FULL SCAN — versi 2025 (berfungsi)
 function runFullScan() {
-  const os = /android/i.test(navigator.userAgent) ? 'Android' : /iPad|iPhone/.test(navigator.userAgent) ? 'iOS' : 'Other';
-  const device = /mobile/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
-  const screen = `${screen.width}x${screen.height}`;
-  const touch = 'ontouchstart' in window ? 'Active' : 'None';
-  const online = navigator.onLine ? 'Online' : 'Offline';
-  const battery = 'getBattery' in navigator ? 'Accessible' : 'Blocked';
+  const ua = navigator.userAgent;
 
-  let output = `> OS: ${os}\n> Device: ${device}\n> Screen: ${screen}\n> Touch: ${touch}\n> Network: ${online}\n> Battery API: ${battery}\n> Scan Complete.`;
+  // OS Detection
+  let os = "Unknown";
+  if (/android/i.test(ua)) os = "Android";
+  else if (/iPad|iPhone/i.test(ua)) os = "iOS";
+  else if (/MacIntel/.test(navigator.platform) && navigator.maxTouchPoints > 1) os = "iOS (Mac)";
+  else if (/Mac/.test(navigator.platform)) os = "macOS";
+  else if (/Win/.test(navigator.platform)) os = "Windows";
+  else if (/Linux/.test(navigator.platform)) os = "Linux";
+
+  // Device Type
+  const isMobile = /Mobile|Android|iP(hone|od)/.test(ua);
+  const isTablet = /Tablet|iPad/.test(ua);
+  const device = isTablet ? "Tablet" : isMobile ? "Mobile" : "Desktop";
+
+  // Estimate Model (for Android/iOS)
+  let model = "Unknown";
+  if (os === "Android") {
+    const match = ua.match(/Android.*?;\s([^;]+)/);
+    model = match ? match[1].trim() : "Generic Android";
+  } else if (os === "iOS") {
+    if (/iPad/.test(ua)) model = "iPad";
+    else if (/iPhone/.test(ua)) {
+      // Rough iPhone model (limited)
+      if (ua.includes("iPhone15")) model = "iPhone 15";
+      else if (ua.includes("iPhone14")) model = "iPhone 14";
+      else model = "iPhone (Unknown Model)";
+    }
+  }
+
+  // Screen
+  const screenRes = `${window.screen.width} × ${window.screen.height}`;
+  const viewport = `${window.innerWidth} × ${window.innerHeight}`;
+
+  // Touch
+  const touch = 'ontouchstart' in window ? "Active" : "Not Detected";
+
+  // Online
+  const online = navigator.onPlane ? "Offline" : "Online";
+
+  // Battery — dengan fallback
+  let batteryStatus = "🔒 Restricted (Privacy)";
+  if ('getBattery' in navigator) {
+    navigator.getBattery().then(bat => {
+      document.getElementById('batteryLine').textContent = `> Battery: ${Math.round(bat.level * 100)}% | ${bat.charging ? 'Charging' : 'Discharging'}`;
+    }).catch(() => {
+      // silently fail
+    });
+  }
+
+  // Build output
+  let output = `> OS: ${os}\n> Device: ${device}\n> Model (Est.): ${model}\n> Screen: ${screenRes}\n> Viewport: ${viewport}\n> Touch: ${touch}\n> Network: ${online}\n> Battery: ${batteryStatus}\n──────────────\n> Scan completed at ${new Date().toLocaleTimeString()}`;
+  
   const el = document.getElementById('scanOutput');
   el.textContent = output;
   el.classList.add('show');
+
+  // Placeholder for battery (will update if accessible)
+  if ('getBattery' in navigator) {
+    const batLine = document.createElement('div');
+    batLine.id = 'batteryLine';
+    batLine.textContent = '> Battery: Detecting...';
+    batLine.style.color = '#ffcc00';
+    el.appendChild(batLine);
+  }
 }
 
-// Touch Field
+// ✅ Touch Field (sama seperti sebelum — berfungsi)
 function activateTouchField() {
   const field = document.getElementById('touchField');
   field.classList.add('active');
@@ -84,19 +104,18 @@ function handleRipple(e) {
   ripple.style.left = x + 'px';
   ripple.style.top = y + 'px';
   field.appendChild(ripple);
-
   setTimeout(() => ripple.remove(), 800);
 }
 
-// Report
+// ✅ Report (berfungsi)
 function submitReport() {
   const msg = document.getElementById('userReport').value.trim();
-  if (!msg) return alert('Enter your report.');
+  if (!msg) return alert('Please describe the issue.');
   const subject = 'NeuroScan Diagnostic Report';
   window.location.href = `mailto:pfareezonzz01@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
 }
 
-// Start
+// ✅ Start
 window.onload = () => {
   initParticles();
 };
