@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-  <meta name="description" content="World's most intelligent device troubleshooter. Futuristic. Local. Secure.">
+  <meta name="description" content="Professional device diagnostics. 100% local. No data leaves your device.">
   <title>NeuroScan Elite</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%238a8aff%22>🧠</text></svg>">
 </head>
 <body id="body">
-  <!-- Dynamic Particles -->
   <div id="particles"></div>
 
-  <!-- UI -->
   <div class="core-interface">
     <header>
       <h1>NEUROSCAN<span class="elite">ELITE</span></h1>
-      <div class="subtitle">Intelligence-Based Device Diagnostics</div>
+      <div class="subtitle">Precision Device Diagnostics</div>
       <div id="liveIntel" class="intel-bar"></div>
     </header>
 
@@ -26,43 +23,38 @@
     </nav>
 
     <main class="modules">
-      <!-- Module 1: Intelligence Scan -->
       <div class="module" id="intelModule">
         <div class="module-header">🧠 INTELLIGENCE SCAN</div>
-        <button class="elite-btn" onclick="runIntelScan()">LAUNCH INTEL SCAN</button>
+        <button class="elite-btn" onclick="runIntelScan()">LAUNCH SCAN</button>
         <div id="intelOutput" class="output-panel"></div>
       </div>
 
-      <!-- Module 2: Touch Matrix -->
       <div class="module" id="touchModule">
-        <div class="module-header">🖐️ MULTI-TOUCH MATRIX</div>
-        <button class="elite-btn" onclick="activateTouchMatrix()">ACTIVATE MATRIX</button>
+        <div class="module-header">🖐️ TOUCH MATRIX</div>
+        <button class="elite-btn" onclick="activateTouchMatrix()">ACTIVATE</button>
         <div id="touchMatrix" class="touch-matrix"></div>
         <div id="touchStats" class="stats-panel"></div>
       </div>
 
-      <!-- Module 3: Stress Test -->
       <div class="module" id="stressModule">
-        <div class="module-header">⚡ PERFORMANCE STRESS TEST</div>
-        <button class="elite-btn" onclick="runStressTest()">BEGIN STRESS TEST</button>
+        <div class="module-header">⚡ STRESS TEST</div>
+        <button class="elite-btn" onclick="runStressTest()">BEGIN TEST</button>
         <div id="stressResult" class="output-panel"></div>
       </div>
 
-      <!-- Module 4: Report & Support -->
       <div class="module" id="supportModule">
-        <div class="module-header">📡 INTELLIGENT REPORT</div>
-        <textarea id="userIssue" placeholder="Describe anomaly or observation..."></textarea>
+        <div class="module-header">📡 REPORT</div>
+        <textarea id="userIssue" placeholder="Describe your issue..."></textarea>
         <div class="support-actions">
-          <button class="elite-btn alt" onclick="generateFingerprint()">GENERATE FINGERPRINT</button>
-          <button class="elite-btn" onclick="sendIntelligentReport()">TRANSMIT REPORT</button>
+          <button class="elite-btn alt" onclick="generateFingerprint()">FINGERPRINT</button>
+          <button class="elite-btn" onclick="sendReport()">SEND REPORT</button>
         </div>
-        <div id="qrCode" class="qr-placeholder">QR for WhatsApp Support</div>
       </div>
     </main>
 
     <footer class="elite-footer">
-      <div>NeuroScan Elite v2.0 • Intellect UI • Dec 2025</div>
-      <div>All processing is local. Zero data leaves your device.</div>
+      <div>NeuroScan Elite v2.0 • All processing is local</div>
+      <div>No hardware identifiers are collected or displayed</div>
     </footer>
   </div>
 
