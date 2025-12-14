@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="Professional device troubleshooter with touch test, diagnostics & reporting.">
+  <title>Device Intellect Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+</head>
+<body class="bg">
+  <div class="container">
+    <header class="hero">
+      <h1>Device Intellect Analyzer</h1>
+      <p class="subtitle">Professional troubleshooting for your device</p>
+    </header>
+
+    <!-- Device Overview -->
+    <div class="glass-card">
+      <h2>📱 Device Overview</h2>
+      <button class="action-btn" onclick="analyzeDevice()">→ Analyze Now</button>
+      <div id="deviceInfo" class="collapsible-content"></div>
+    </div>
+
+    <!-- Touch Tester -->
+    <div class="glass-card">
+      <h2>🖐️ Touch Screen Tester</h2>
+      <p>Tap to test responsiveness. Dead zones won’t react.</p>
+      <button class="action-btn" onclick="startTouchTest()">→ Start Touch Test</button>
+      <div id="touchTester" class="touch-tester"></div>
+    </div>
+
+    <!-- Display Tests -->
+    <div class="glass-card">
+      <h2>🎨 Display Tests</h2>
+      <div class="test-grid">
+        <button class="test-btn red" onclick="showColor('red')"></button>
+        <button class="test-btn green" onclick="showColor('green')"></button>
+        <button class="test-btn blue" onclick="showColor('blue')"></button>
+        <button class="test-btn white" onclick="showColor('white')"></button>
+        <button class="test-btn black" onclick="showColor('black')"></button>
+        <button class="test-btn gray" onclick="showColor('gray')"></button>
+      </div>
+      <button class="action-btn small" onclick="exitColorTest()">Exit Color Test</button>
+    </div>
+
+    <!-- Network & Browser -->
+    <div class="glass-card">
+      <h2>🌐 Network & Browser</h2>
+      <button class="action-btn" onclick="testNetwork()">→ Run Diagnostics</button>
+      <div id="networkInfo" class="collapsible-content"></div>
+    </div>
+
+    <!-- Report Issue -->
+    <div class="glass-card">
+      <h2>📝 Report an Issue</h2>
+      <textarea id="issueDesc" placeholder="Describe your problem..."></textarea>
+      <div class="button-row">
+        <button class="action-btn small" onclick="copyDeviceSummary()">Copy Device Info</button>
+        <button class="action-btn small alt" onclick="sendReport()">Send Report</button>
+      </div>
+    </div>
+
+    <!-- Help & Tips -->
+    <div class="glass-card">
+      <h2>ℹ️ Help & Tips</h2>
+      <div class="tip">
+        <strong>Touch unresponsive?</strong><br>
+        → Restart your device.<br>
+        → Clean screen with microfiber cloth.
+      </div>
+      <div class="tip">
+        <strong>Battery drains fast?</strong><br>
+        → Disable background apps.<br>
+        → Lower screen brightness.
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div>Device Intellect Analyzer v1.0 • Dec 2025</div>
+      <div>No data leaves your device. All processing is local.</div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
